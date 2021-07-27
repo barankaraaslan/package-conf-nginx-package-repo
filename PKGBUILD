@@ -11,8 +11,12 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}::git+https://github.com/barankaraaslan/conf-nginx-package-repo.git")
 
+build() {
+	cd "$pkgname-$pkgver"
+	make 
+}
+
 package() {
 	cd "$pkgname-$pkgver"
-	# echo $pkgdir
 	make DESTDIR="$pkgdir" install
 }
